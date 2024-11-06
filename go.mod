@@ -1,3 +1,3 @@
-module github.com/goexl/wanip
+module github.com/goexl/collection
 
-go 1.19
+go 1.23
