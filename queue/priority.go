@@ -3,12 +3,11 @@ package queue
 import (
 	"container/heap"
 
-	"github.com/goexl/collection"
 	"github.com/goexl/collection/internal/kernel"
 	"github.com/goexl/collection/queue/internal/priority"
 )
 
-var _ collection.Queue[int] = (*Priority)(nil)
+var _ kernel.Queue[int] = (*Priority)(nil)
 
 // Priority 优先级队列
 type Priority[T kernel.Ranker] struct {

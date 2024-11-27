@@ -1,15 +1,15 @@
-# 项目
-[![编译状态](https://github.ruijc.com:20443/api/badges/goexl/gox/status.svg)](https://github.ruijc.com:20443/pangum/pangu)
-[![Golang质量](https://goreportcard.com/badge/github.com/goexl/gox)](https://goreportcard.com/report/github.com/pangum/pangu)
-![版本](https://img.shields.io/github/go-mod/go-version/goexl/gox)
-![仓库大小](https://img.shields.io/github/repo-size/goexl/gox)
-![最后提交](https://img.shields.io/github/last-commit/goexl/gox)
-![授权协议](https://img.shields.io/github/license/goexl/gox)
-![语言个数](https://img.shields.io/github/languages/count/goexl/gox)
-![最佳语言](https://img.shields.io/github/languages/top/goexl/gox)
-![星星个数](https://img.shields.io/github/stars/goexl/gox?style=social)
+# collection
+[![编译状态](https://github.ruijc.com:20443/api/badges/goexl/collection/status.svg)](https://github.ruijc.com:20443/pangum/pangu)
+[![Golang质量](https://goreportcard.com/badge/github.com/goexl/collection)](https://goreportcard.com/report/github.com/pangum/pangu)
+![版本](https://img.shields.io/github/go-mod/go-version/goexl/collection)
+![仓库大小](https://img.shields.io/github/repo-size/goexl/collection)
+![最后提交](https://img.shields.io/github/last-commit/goexl/collection)
+![授权协议](https://img.shields.io/github/license/goexl/collection)
+![语言个数](https://img.shields.io/github/languages/count/goexl/collection)
+![最佳语言](https://img.shields.io/github/languages/top/goexl/collection)
+![星星个数](https://img.shields.io/github/stars/goexl/collection?style=social)
 
-项目介绍
+`Golang`集合框架，以`Java`集合框架为原型设计
 
 ## 捐助
 

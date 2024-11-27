@@ -1,7 +1,7 @@
 package collection
 
-// Collection 集合
-type Collection interface {
-	// Size 大小
-	Size() int
-}
+import (
+	"github.com/goexl/collection/internal/kernel"
+)
+
+type Collection = kernel.Collection

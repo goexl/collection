@@ -1,12 +1,7 @@
 package collection
 
-// Queue 队列
-type Queue[T any] interface {
-	Collection
+import (
+	"github.com/goexl/collection/internal/kernel"
+)
 
-	// Enqueue 入队
-	Enqueue(T, ...T)
-
-	// Dequeue 出队
-	Dequeue() []T
-}
+type Queue[T any] = kernel.Queue[T]
