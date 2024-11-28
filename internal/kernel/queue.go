@@ -1,6 +1,5 @@
 package kernel
 
-// Queue 队列
 type Queue[T any] interface {
 	Collection
 
@@ -8,5 +7,5 @@ type Queue[T any] interface {
 	Enqueue(T, ...T)
 
 	// Dequeue 出队
-	Dequeue() []T
+	Dequeue() T
 }

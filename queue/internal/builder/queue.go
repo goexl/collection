@@ -2,11 +2,13 @@ package builder
 
 import (
 	"github.com/goexl/collection/internal/kernel"
+	"github.com/goexl/collection/queue/internal/core"
 	"github.com/goexl/collection/queue/internal/param"
 )
 
 type Queue[T any] struct {
 	params *param.Queue
+	queue  kernel.Queue[T]
 }
 
 func NewQueue[T any]() *Queue[T] {
@@ -15,13 +17,25 @@ func NewQueue[T any]() *Queue[T] {
 	}
 }
 
-func (b *Queue[T]) Capacity(capacity int) (blocking *Queue[T]) {
-	b.params.Capacity = capacity
-	blocking = b
+func (q *Queue[T]) Blocking() (queue *Queue[T]) {
+	q.queue = core.NewBlocking[T](q.params)
+	queue = q
 
 	return
 }
 
-func (b *Queue[T]) Build() *kernel.Queue[T] {
+func (q *Queue[T]) Capacity(capacity int) (queue *Queue[T]) {
+	q.params.Capacity = capacity
+	queue = q
+
+	return
+}
+
+func (q *Queue[T]) Build() (queue kernel.Queue[T]) {
+	if nil == q.queue {
+		q.queue = core.NewDefault[T](q.params)
+	}
+	queue = q.queue
+
 	return
 }

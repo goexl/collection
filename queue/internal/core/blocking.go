@@ -1,6 +1,7 @@
-package internal
+package core
 
 import (
+	"container/list"
 	"sync"
 
 	"github.com/goexl/collection/internal/kernel"
@@ -10,7 +11,7 @@ import (
 var _ kernel.Queue[int] = (*Blocking[int])(nil)
 
 type Blocking[T any] struct {
-	data  []T
+	items *list.List
 	mutex *sync.Mutex
 	cond  *sync.Cond
 
@@ -19,7 +20,7 @@ type Blocking[T any] struct {
 
 func NewBlocking[T any](params *param.Queue) (blocking *Blocking[T]) {
 	blocking = new(Blocking[T])
-	blocking.data = make([]T, 0, params.Capacity)
+	blocking.items = list.New()
 	blocking.mutex = new(sync.Mutex)
 	blocking.cond = sync.NewCond(blocking.mutex)
 
@@ -33,27 +34,37 @@ func (b *Blocking[T]) Enqueue(required T, optionals ...T) {
 	defer b.mutex.Unlock()
 
 	items := append([]T{required}, optionals...)
-	for len(b.data)+len(items) > b.params.Capacity {
+	for b.items.Len()+len(items) > b.params.Capacity {
 		b.cond.Wait()
 	}
-	b.data = append(b.data, items...)
+	for _, item := range items {
+		b.items.PushBack(item)
+	}
 	b.cond.Broadcast()
 }
 
-func (b *Blocking[T]) Dequeue() (items []T) {
+func (b *Blocking[T]) Dequeue() (item T) {
 	b.mutex.Lock()
 	defer b.mutex.Unlock()
 
-	for len(b.data) == 0 {
+	for 0 == b.items.Len() {
 		b.cond.Wait()
 	}
-	items = b.data[:]
-	b.data = make([]T, 0, b.params.Capacity)
+
+	if 0 != b.items.Len() {
+		element := b.items.Front()
+		b.items.Remove(element)
+		item = element.Value.(T)
+	}
 	b.cond.Broadcast()
 
 	return
 }
 
 func (b *Blocking[T]) Size() int {
-	return len(b.data)
+	return b.items.Len()
+}
+
+func (b *Blocking[T]) Empty() bool {
+	return 0 == b.items.Len()
 }
