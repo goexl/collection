@@ -3,7 +3,7 @@ package queue_test
 import (
 	"testing"
 
-	"github.com/goexl/collection/queue"
+	"github.com/goexl/container/queue"
 	"github.com/stretchr/testify/require"
 )
 

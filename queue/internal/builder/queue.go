@@ -1,9 +1,9 @@
 package builder
 
 import (
-	"github.com/goexl/collection/internal/kernel"
-	"github.com/goexl/collection/queue/internal/core"
-	"github.com/goexl/collection/queue/internal/param"
+	"github.com/goexl/container/internal/kernel"
+	"github.com/goexl/container/queue/internal/core"
+	"github.com/goexl/container/queue/internal/param"
 )
 
 type Queue[T any] struct {

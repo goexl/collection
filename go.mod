@@ -1,4 +1,4 @@
-module github.com/goexl/collection
+module github.com/goexl/container
 
 go 1.23
 

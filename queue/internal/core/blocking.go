@@ -4,8 +4,8 @@ import (
 	"container/list"
 	"sync"
 
-	"github.com/goexl/collection/internal/kernel"
-	"github.com/goexl/collection/queue/internal/param"
+	"github.com/goexl/container/internal/kernel"
+	"github.com/goexl/container/queue/internal/param"
 )
 
 var _ kernel.Queue[int] = (*Blocking[int])(nil)

@@ -1,7 +1,7 @@
 package priority
 
 import (
-	"github.com/goexl/collection/internal/kernel"
+	"github.com/goexl/container/internal/kernel"
 )
 
 type Item[T kernel.Ranker] struct {

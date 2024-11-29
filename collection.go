@@ -1,7 +1,7 @@
 package collection
 
 import (
-	"github.com/goexl/collection/internal/kernel"
+	"github.com/goexl/container/internal/kernel"
 )
 
 // Collection 集合
