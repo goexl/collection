@@ -1,4 +1,4 @@
-package collection
+package container
 
 import (
 	"github.com/goexl/container/internal/kernel"
