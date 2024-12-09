@@ -5,4 +5,4 @@ import (
 )
 
 // Queue 队列
-type Queue[T any] = kernel.Queue[T]
+type Queue[T any] kernel.Queue[T]
