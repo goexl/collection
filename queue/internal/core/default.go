@@ -21,33 +21,33 @@ func NewDefault[T any](params *param.Queue) *Default[T] {
 	}
 }
 
-func (q *Default[T]) Enqueue(required T, optionals ...T) {
-	q.enqueue(required)
+func (d *Default[T]) Enqueue(required T, optionals ...T) {
+	d.enqueue(required)
 	for _, optional := range optionals {
-		q.enqueue(optional)
+		d.enqueue(optional)
 	}
 }
 
-func (q *Default[T]) Dequeue() (item T) {
-	if 0 != q.items.Len() {
-		element := q.items.Front()
-		q.items.Remove(element)
+func (d *Default[T]) Dequeue() (item T) {
+	if 0 != d.items.Len() {
+		element := d.items.Front()
+		d.items.Remove(element)
 		item = element.Value.(T)
 	}
 
 	return
 }
 
-func (q *Default[T]) Empty() bool {
-	return 0 == q.items.Len()
+func (d *Default[T]) Empty() bool {
+	return 0 == d.items.Len()
 }
 
-func (q *Default[T]) Size() int {
-	return q.items.Len()
+func (d *Default[T]) Size() int {
+	return d.items.Len()
 }
 
-func (q *Default[T]) enqueue(item T) {
-	for q.params.Capacity > q.items.Len() {
-		q.items.PushBack(item)
+func (d *Default[T]) enqueue(item T) {
+	if d.params.Capacity > d.items.Len() {
+		d.items.PushBack(item)
 	}
 }
